@@ -82,7 +82,8 @@ vercomp () {
 }
 
 get_mongodb_version
-vercomp "$MONGODB_VERSION" '2.5.9999999999999999'                                                                                                                                                   
+vercomp "$MONGODB_VERSION" '2.5.9999999999999999'
+
 if [[ $? == 1 ]]; then
   # 2.6
   db_image="jeffutter/mongodb:latest"
@@ -120,10 +121,9 @@ case "$1" in
     else
       echo $mongodb_password > "$DOKKU_ROOT/.mongodb/pass_${APP}_${DATABASE}"
     fi
-    
 
     mongodb_username=$APP
-    
+
     get_mongodb_auth_schema_version
     vercomp "$MONGODB_AUTH_SCHEMA_VERSION" '2.9999999'
     if [[ $? == 1 ]]; then
